@@ -1,0 +1,20 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: akdemoorganicapp 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: akdemoorganicapp
+  template:
+    metadata:
+      labels:
+        app: akdemoorganicapp 
+    spec:
+      containers:
+        - name: akdemoorganicapp 
+          image: akdemoregistry.azurecr.io/akdemoorganicapp:latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 4500

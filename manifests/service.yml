@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: akdemoorganicapp
+    annotations:
+        service.beta.kubernetes.io/azure-load-balancer-backend-protocol: http
+        service.beta.kubernetes.io/azure-load-balancer-ssl-ports: "443,4500"
+spec:
+    type: LoadBalancer
+    ports:
+    - name: http
+      protocol: TCP
+      port: 4500       
+      targetPort: 4500  
+
+    - name: https
+      protocol: TCP
+      port: 443       
+      targetPort: 4501 
+
+    selector: 
+        app: akdemoorganicapp
